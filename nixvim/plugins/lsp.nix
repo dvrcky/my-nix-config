@@ -1,26 +1,16 @@
 {
   programs.nixvim.plugins = {
-
     treesitter = {
       enable = true;
       nixvimInjections = true;
       settings.indent.enable = true;
     };
 
-    treesitter-refactor = {
-      enable = true;
-      highlightDefinitions = {
-        enable = true;
-        # Set to false if you have an `updatetime` of ~100.
-        clearOnCursorMove = false;
-      };
-    };
-
     hmts.enable = true;
 
     lspkind = {
       enable = true;
-    cmp = {
+      settings.cmp = {
         enable = true;
         menu = {
           nvim_lsp = "[LSP]";
@@ -33,9 +23,12 @@
         };
       };
     };
+
     lsp = {
       enable = true;
       servers = {
+        html.enable = true;
+        quick_lint_js.enable = true;
         clangd.enable = true;
         cmake.enable = true;
         rust_analyzer = {
@@ -48,7 +41,7 @@
     };
   };
 
-    programs.nixvim.extraConfigLua = ''
+  programs.nixvim.extraConfigLua = ''
     local _border = "rounded"
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(

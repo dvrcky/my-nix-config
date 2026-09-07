@@ -14,7 +14,7 @@
         })
         {
           # Open Neotree
-          "<C-n>" = ":Neotree<CR>";
+          "<C-n>" = ":Neotree toggle<CR>";
 
           # Esc to clear search results
           "<esc>" = ":noh<CR>";
@@ -65,7 +65,7 @@
           "J" = ":m '>+1<CR>gv=gv";
         };
     in
-      config.nixvim.helpers.keymaps.mkKeymaps
+      config.lib.nixvim.keymaps.mkKeymaps
       {options.silent = true;}
       (normal ++ visual);
   };

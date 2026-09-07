@@ -1,21 +1,22 @@
 {
-	imports = [
+  imports = [
     ./twilight.nix
     ./ts-autotag.nix
-		./lualine.nix
+    ./emmet.nix
+    ./lualine.nix
     ./luasnip.nix
     ./tmux.nix
-		./neotree.nix
+    ./neotree.nix
     ./tagbar.nix
-		./toggleterm.nix
+    ./toggleterm.nix
     ./lsp.nix
-		./transparent.nix
-    ./treesitter.nix
-		./barbar.nix
-		./nix.nix
+    ./transparent.nix
+    # ./barbar.nix
+    ./nix.nix
     ./cmp.nix
     ./autoclose.nix
     ./mini.nix
     ./multicursors.nix
-	];
+    ./tiny-git.nix
+  ];
 }

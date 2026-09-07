@@ -8,8 +8,8 @@
 		enable = true;
                 opts = {
                   relativenumber = true;
-                  tabstop = 2;
-                  shiftwidth=2;
+                  tabstop = 4;
+                  shiftwidth=4;
                 };
 		colorschemes.catppuccin.enable = true;
 		defaultEditor = true;
