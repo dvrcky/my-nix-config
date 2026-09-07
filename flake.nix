@@ -20,9 +20,14 @@
     };
 
     nixvim.url = "github:nix-community/nixvim";
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, niri, zen-browser, nixvim, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, niri, zen-browser, nixvim, sops-nix, ... }: {
     nixosConfigurations.dvrcky = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
@@ -44,6 +49,7 @@
         niri.nixosModules.niri
         zen-browser.nixosModules.zen-browser
         nixvim.nixosModules.nixvim
+        sops-nix.nixosModules.sops
         ./nixos
 
         home-manager.nixosModules.home-manager

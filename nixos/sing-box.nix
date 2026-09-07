@@ -1,11 +1,23 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
-  configFile = "/etc/sing-box/config.json";
+  configFile = config.sops.templates."sing-box/config.json".path;
 
 in
 {
-  environment.etc."sing-box/config.json".text = builtins.toJSON {
+  sops.age.keyFile = "/home/dvrcky/.config/sops/age/keys.txt";
+
+  sops.secrets."sing-box/trojan-password" = {
+    sopsFile = ../secrets/sing-box.yaml;
+    key = "trojan-password";
+    owner = "root";
+    group = "root";
+    mode = "0400";
+  };
+
+  sops.templates."sing-box/config.json" = {
+    mode = "0400";
+    content = builtins.toJSON {
     log = {
       level = "info";
     };
@@ -55,7 +67,7 @@ in
         tag = "proxy";
         server = "89.127.232.159";
         server_port = 25571;
-        password = "NC3FvPhOsN";
+        password = config.sops.placeholder."sing-box/trojan-password";
         tls = {
           enabled = true;
           server_name = "www.apple.com";
@@ -103,6 +115,7 @@ in
       ];
       final = "proxy";
     };
+    };
   };
 
   systemd.services.sing-box = {
@@ -111,7 +124,9 @@ in
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
     serviceConfig = {
-      ExecStartPre = "${pkgs.sing-box}/bin/sing-box check -c ${configFile}";
+      ExecStartPre = [
+        "${pkgs.sing-box}/bin/sing-box check -c ${configFile}"
+      ];
       ExecStart = "${pkgs.sing-box}/bin/sing-box run -c ${configFile}";
       Restart = "on-failure";
       RestartSec = 5;

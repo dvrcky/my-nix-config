@@ -1,0 +1,8 @@
+keys:
+  - &dvrcky age15xtz5rq0yecjegh8mk6sx7lwujrfvnqqkwarszjmh230k36f7f0qt8n86j
+
+creation_rules:
+  - path_regex: secrets/.*
+    key_groups:
+      - age:
+          - *dvrcky
