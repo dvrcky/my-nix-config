@@ -1,1 +1,1 @@
-My nixos config
+Clean modular NixOS configuration draft.
