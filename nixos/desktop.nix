@@ -7,8 +7,6 @@
   };
 
   programs.zen-browser.enable = true;
-  programs.throne.enable = true;
-  programs.throne.tunMode.enable = true;
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
