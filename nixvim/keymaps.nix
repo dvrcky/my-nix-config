@@ -65,8 +65,6 @@
           "J" = ":m '>+1<CR>gv=gv";
         };
     in
-      config.lib.nixvim.keymaps.mkKeymaps
-      {options.silent = true;}
-      (normal ++ visual);
+      map (keymap: keymap // { options.silent = true; }) (normal ++ visual);
   };
 }
