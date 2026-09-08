@@ -2,7 +2,7 @@
   programs.nixvim.plugins.lualine = {
 
     enable = true;
-    settings.globalstatus = true;
+    settings.options.globalstatus = true;
 
     # +------line-------------------------------------------+
     # | A | B | C                             X | Y | Z |

@@ -10,6 +10,7 @@
                   relativenumber = true;
                   tabstop = 4;
                   shiftwidth=4;
+                  laststatus = 3;
                 };
 		colorschemes.catppuccin.enable = true;
 		defaultEditor = true;
