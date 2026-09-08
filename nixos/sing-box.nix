@@ -5,6 +5,11 @@ let
 
 in
 {
+  # TUN replies can fail reverse-path checks due to sing-box policy routing.
+  networking.firewall.extraCommands = ''
+    iptables -t mangle -I nixos-fw-rpfilter 1 -i singbox_tun -j RETURN
+  '';
+
   sops.age.keyFile = "/home/dvrcky/.config/sops/age/keys.txt";
 
   sops.secrets."sing-box/trojan-password" = {

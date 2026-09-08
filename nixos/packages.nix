@@ -27,7 +27,6 @@
     kdePackages.polkit-kde-agent-1
     libproxy
     llama-cpp
-    mako
     man-db
     man-pages
     man-pages-posix

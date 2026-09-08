@@ -20,14 +20,60 @@
     sessionPath = [ "$HOME/.cargo/bin" ];
   };
 
-  services.mako = {
+  services.swaync = {
     enable = true;
     settings = {
-      default-timeout = 5000;
-      ignore-timeout = false;
-      "urgency=critical" = {
-        default-timeout = 5000;
-      };
+      positionX = "right";
+      positionY = "top";
+      notification-window-width = 344;
+      control-center-width = 380;
+      control-center-margin-top = 12;
+      control-center-margin-bottom = 12;
+      control-center-margin-right = 12;
+      timeout = 5;
+      timeout-low = 5;
+      timeout-critical = 5;
+      transition-time = 250;
+      widgets = [ "title" "dnd" "notifications" ];
     };
+    style = ''
+      * {
+        font-family: "JetBrains Mono";
+        font-size: 11pt;
+      }
+
+      .notification {
+        background: #303446;
+        color: #c6d0f5;
+        border: 2px solid #8caaee;
+        border-radius: 10px;
+        margin: 6px 12px;
+      }
+
+      .notification-content {
+        padding: 14px;
+      }
+
+      .summary, .body, .time {
+        color: #c6d0f5;
+      }
+
+      .control-center {
+        background: #303446;
+        color: #c6d0f5;
+        border: 2px solid #8caaee;
+        border-radius: 10px;
+      }
+
+      progressbar trough {
+        background: #414559;
+        border-radius: 6px;
+      }
+
+      progressbar progress {
+        background: #8caaee;
+        border-radius: 6px;
+      }
+    '';
   };
 }

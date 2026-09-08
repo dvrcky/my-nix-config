@@ -21,10 +21,8 @@
     ranger
     rustc
     rustup
-    syncthing
     unzip
     wget
     zathura
-    firefox
   ];
 }
