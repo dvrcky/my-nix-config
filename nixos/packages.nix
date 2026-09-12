@@ -54,5 +54,5 @@
     nerd-fonts.droid-sans-mono
   ];
 
-  xdg.mime.defaultApplications."application/pdf" = "zathura.desktop";
+  xdg.mime.defaultApplications."application/pdf" = "org.pwmt.zathura.desktop";
 }

@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    vscodium
     awww
     brightnessctl
     clang
@@ -24,5 +25,6 @@
     unzip
     wget
     zathura
+
   ];
 }
